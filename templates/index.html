@@ -3,11 +3,15 @@
 {% block content %}
 <div class="container mt-5">
     <h1 class="text-center mb-4">Rap Lyrics Generator by TRHACKNON</h1>
+    
+    <!-- Section pour afficher le logo SVG -->
+    <div class="text-center mb-4">
+        <img src="{{ url_for('static', filename='buganim.svg') }}" alt="Logo" class="logo-svg">
+    </div>
 
     <div class="row">
         <div class="col-md-6">
             <form id="lyricForm">
-                <!-- Formulaire de génération de paroles -->
                 <div class="mb-3">
                     <label for="theme" class="form-label">Theme</label>
                     <input type="text" class="form-control" id="theme" required>
@@ -63,4 +67,24 @@
         </div>
     </div>
 </div>
+
+<script>
+    const logo = document.querySelector('.logo-svg');
+    
+    function randomPosition() {
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+        
+        // Calculer une position aléatoire à l'intérieur des limites de la fenêtre
+        const x = Math.random() * (windowWidth - 100); // -100 pour éviter que le logo sorte de la vue
+        const y = Math.random() * (windowHeight - 100); // -100 pour éviter que le logo sorte de la vue
+        
+        // Appliquer la position
+        logo.style.left = `${x}px`;
+        logo.style.top = `${y}px`;
+    }
+
+    // Déplacer le scarabé à une position aléatoire toutes les 2 secondes
+    setInterval(randomPosition, 2000);
+</script>
 {% endblock %}
