@@ -79,19 +79,17 @@ body {
 }
 
 .logo-svg {
-    width: 150px;
+    width: 100px;  /* Ajuste la taille ici */
     height: auto;
-    animation: pulse 3s infinite;
+    animation: glow 1.5s infinite alternate;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));  /* Ombre portée pour le glow */
 }
 
-@keyframes pulse {
+@keyframes glow {
     0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
+        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)) brightness(1);
     }
     100% {
-        transform: scale(1);
+        filter: drop-shadow(0 0 15px rgba(255, 255, 255, 1)) brightness(1.5);
     }
 }
