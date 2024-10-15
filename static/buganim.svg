@@ -51,7 +51,7 @@
 
     <!-- Ajouter des initiales en texte -->
     <text x="8" y="12" font-family="Arial" font-size="1" fill="blue" text-anchor="middle" font-weight="bold">
-        IP Tracking
+        Rap AI Generator
     </text>
     <text x="8" y="14" font-family="Arial" font-size="1" fill="red" text-anchor="middle" font-weight="bold">
         Tool By TRKN
