@@ -77,3 +77,21 @@ body {
     flex-wrap: wrap;
     justify-content: flex-start;
 }
+
+.logo-svg {
+    width: 150px;
+    height: auto;
+    animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
