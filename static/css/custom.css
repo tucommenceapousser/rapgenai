@@ -1,0 +1,79 @@
+/* Base styles for dark theme */
+body {
+    background-color: #1a1a1a;
+    color: #f5f5f5;
+    padding-bottom: 50px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Styling for lyrics output */
+#lyricsOutput {
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    background-color: #2b2b2b;
+    border-radius: 8px;
+    padding: 15px;
+    color: #e0e0e0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Subtile neon effect */
+.neon {
+    color: #39ff14; /* Fluorescent green */
+    text-shadow:
+        0 0 5px #39ff14,
+        0 0 10px #39ff14,
+        0 0 15px #39ff14,
+        0 0 20px #39ff14;
+}
+
+.btn-primary:hover {
+    background-color: #0077b6;
+    color: #ffffff;
+}
+
+.btn-success {
+    background-color: #04e762;
+    border: none;
+}
+
+
+/* Accent styles */
+.accent {
+    color: #e63946; /* Bright red */
+}
+
+.accent-bg {
+    background-color: #1d3557; /* Dark blue */
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+/* Beat maker styles */
+.step {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin: 2px;
+    padding: 0;
+}
+
+.step-number {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+    color: var(--bs-secondary);
+}
+
+.btn-primary .step-number {
+    color: var(--bs-light);
+}
+
+.steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}

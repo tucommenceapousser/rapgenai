@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Your Favorites</h2>
+    <h3>Favorite Lyrics</h3>
+    <ul class="list-group">
+        {% for lyric in favorite_lyrics %}
+        <li class="list-group-item">{{ lyric.content }}</li>
+        {% endfor %}
+    </ul>
+    <h3 class="mt-4">Favorite Tracks</h3>
+    <ul class="list-group">
+        {% for track in favorite_tracks %}
+        <li class="list-group-item">{{ track.track_name }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

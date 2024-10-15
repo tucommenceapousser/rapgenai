@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Beat Maker</h1>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="mb-3">
+                <label for="bpm" class="form-label">BPM: <span id="bpmValue">120</span></label>
+                <input type="range" class="form-range" id="bpm" min="60" max="180" value="120">
+            </div>
+            <div class="mb-3">
+                <label for="backgroundTrack" class="form-label">Background Track</label>
+                <select id="backgroundTrack" class="form-select">
+                    <option value="">None</option>
+                    {% for track in tracks %}
+                    <option value="{{ track }}">{{ track }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div id="tracks">
+                <!-- Tracks will be added here dynamically -->
+            </div>
+            <button id="addTrack" class="btn btn-primary mt-3">Add Track</button>
+            <div class="mt-3 d-flex justify-content-between">
+                <div>
+                    <button id="playPause" class="btn btn-success">Play</button>
+                    <button id="stop" class="btn btn-danger">Stop</button>
+                    <button id="saveBeat" class="btn btn-info mt-3">Save Beat</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h3>Saved Beats</h3>
+            <select id="savedBeats" class="form-select mb-3">
+                <option value="">Choose a saved beat...</option>
+                {% for beat in saved_beats %}
+                <option value="{{ beat.id }}">{{ beat.name }}</option>
+                {% endfor %}
+            </select>
+            <button id="loadBeat" class="btn btn-secondary">Load Beat</button>
+            <div id="saveStatus" class="mt-3 alert" style="display: none;"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/beat_maker.js') }}"></script>
+{% endblock %}
