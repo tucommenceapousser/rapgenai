@@ -112,6 +112,7 @@ body {
     position: absolute; /* Pour les deux logos */
     z-index: 10; /* Assure que les logos sont au-dessus des autres éléments */
     transition: transform 0.2s; /* Pour une animation fluide */
+    pointer-events: none;
 }
 
 .logo-svg {
