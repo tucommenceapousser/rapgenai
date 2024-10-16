@@ -91,8 +91,8 @@ function randomPosition() {
     const currentY = parseFloat(logo.style.top) || 0;
 
     // Nouvelle position avec limitation pour rester à l'intérieur des bords
-    const newX = Math.min(windowWidth - 100, Math.max(0, currentX + x));
-    const newY = Math.min(windowHeight - 100, Math.max(0, currentY + y));
+    const newX = Math.min(windowWidth - 100, Math.max(0, currentX + x)); // 100 pour la largeur du logo
+    const newY = Math.min(windowHeight - 100, Math.max(0, currentY + y)); // 100 pour la hauteur du logo
 
     // Appliquer la nouvelle position
     logo.style.left = `${newX}px`;
@@ -104,6 +104,10 @@ function randomPosition() {
 
 // Déplacer le scarabé à une nouvelle position toutes les 500 ms
 setInterval(randomPosition, 500);
+
+// Initialiser la position du scarabé au démarrage
+logo.style.left = `${Math.random() * (window.innerWidth - 100)}px`;
+logo.style.top = `${Math.random() * (window.innerHeight - 100)}px`;
     </script>
     {% block scripts %}{% endblock %}
 </body>
