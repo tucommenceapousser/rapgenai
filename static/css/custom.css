@@ -4,6 +4,7 @@ body {
     color: #f5f5f5;
     padding-bottom: 50px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
 }
 
 /* Styling for lyrics output */
