@@ -133,15 +133,40 @@
             const dx = mouseX - (parseFloat(logoo.style.left) + logoo.offsetWidth / 2);
             const dy = mouseY - (parseFloat(logoo.style.top) + logoo.offsetHeight / 2);
             const angle = Math.atan2(dy, dx) * (180 / Math.PI);
-            logoo.style.transform = `rotate(${angle}deg`;
+            logoo.style.transform = `rotate(${angle}deg)`;
         });
 
-        // Fonction pour mettre à jour les limites lorsque la fenêtre est redimensionnée
-        window.addEventListener('resize', () => {
-            // Rappeler la position aléatoire pour rester à l'intérieur des limites
-            logo.style.left = `${Math.min(window.innerWidth - logo.offsetWidth, parseFloat(logo.style.left))}px`;
-            logo.style.top = `${Math.min(window.innerHeight - logo.offsetHeight, parseFloat(logo.style.top))}px`;
-        });
+        // Fonction pour garder le scarabé à l'intérieur de la fenêtre
+        function keepInBounds() {
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+            const logoWidth = logo.offsetWidth;  // Largeur du logo
+            const logoHeight = logo.offsetHeight; // Hauteur du logo
+            
+            let currentX = parseFloat(logo.style.left);
+            let currentY = parseFloat(logo.style.top);
+
+            // Assurez-vous que le scarabé ne dépasse pas à gauche ou à droite
+            if (currentX < 0) {
+                currentX = 0;
+            } else if (currentX + logoWidth > windowWidth) {
+                currentX = windowWidth - logoWidth;
+            }
+
+            // Assurez-vous que le scarabé ne dépasse pas en haut ou en bas
+            if (currentY < 0) {
+                currentY = 0;
+            } else if (currentY + logoHeight > windowHeight) {
+                currentY = windowHeight - logoHeight;
+            }
+
+            // Appliquer la position corrigée
+            logo.style.left = `${currentX}px`;
+            logo.style.top = `${currentY}px`;
+        }
+
+        // Vérifier les limites à chaque intervalle
+        setInterval(keepInBounds, 100); // Vérification toutes les 100 ms
     </script>
     {% block scripts %}{% endblock %}
 </body>
