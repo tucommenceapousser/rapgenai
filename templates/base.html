@@ -126,8 +126,8 @@
             const offsetY = 20; // Décalage vertical
 
             // Placer le logo qui suit le curseur à la position de la souris, avec un léger décalage
-            logoo.style.left = `${mouseX + offsetX - logoo.offsetWidth / 2}px`; // Centrer le logo par rapport à la souris avec décalage
-            logoo.style.top = `${mouseY + offsetY - logoo.offsetHeight / 2}px`;
+            logoo.style.left = `${mouseX + offsetX - logoo.offsetWidth / 10}px`; // Centrer le logo par rapport à la souris avec décalage
+            logoo.style.top = `${mouseY + offsetY - logoo.offsetHeight / 10}px`;
             
             // Rotation pour que le scarabé qui suit le curseur regarde vers le curseur
             const dx = mouseX - (parseFloat(logoo.style.left) + logoo.offsetWidth / 2);
