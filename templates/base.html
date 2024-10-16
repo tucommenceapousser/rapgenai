@@ -71,70 +71,66 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 <script>
-        const logo = document.querySelector('.logo-svg');
-        const logoo = document.querySelector('.logo-svgg');
-        let direction = 0; // Direction initiale en degrés
+const logo = document.querySelector('.logo-svg');
+const logoo = document.querySelector('.logo-svgg');
+let direction = 0; // Direction initiale en degrés
 
-        function randomPosition() {
-            const windowWidth = window.innerWidth;
-            const windowHeight = window.innerHeight;
+function randomPosition() {
+    const windowWidth = window.innerWidth;
+    const windowHeight = window.innerHeight;
 
-            // Générer une nouvelle direction aléatoire
-            direction += (Math.random() * 100 - 50); // Valeurs entre -50 et +50 pour créer un mouvement erratique
-            direction = direction % 360; // Limiter entre 0 et 360
+    // Générer une nouvelle direction aléatoire
+    direction += (Math.random() * 100 - 50); // Valeurs entre -50 et +50 pour créer un mouvement erratique
+    direction = direction % 360; // Limiter entre 0 et 360
 
-            // Calculer une position en fonction de la direction
-            const distance = 50; // Distance à parcourir
-            const x = Math.cos(direction * (Math.PI / 180)) * distance; // Calculer le déplacement en X
-            const y = Math.sin(direction * (Math.PI / 180)) * distance; // Calculer le déplacement en Y
+    // Calculer une position en fonction de la direction
+    const distance = 50; // Distance à parcourir
+    const x = Math.cos(direction * (Math.PI / 180)) * distance; // Calculer le déplacement en X
+    const y = Math.sin(direction * (Math.PI / 180)) * distance; // Calculer le déplacement en Y
 
-            // Obtenir la position actuelle
-            const currentX = parseFloat(logo.style.left) || 0;
-            const currentY = parseFloat(logo.style.top) || 0;
+    // Obtenir la position actuelle
+    const currentX = parseFloat(logo.style.left) || 0;
+    const currentY = parseFloat(logo.style.top) || 0;
 
-            // Nouvelle position avec limitation pour rester à l'intérieur des bords
-            const logoWidth = logo.offsetWidth;  // Largeur du logo
-            const logoHeight = logo.offsetHeight; // Hauteur du logo
+    // Nouvelle position avec limitation pour rester à l'intérieur des bords
+    const logoWidth = logo.offsetWidth;  // Largeur du logo
+    const logoHeight = logo.offsetHeight; // Hauteur du logo
 
-            // Calculer les nouvelles coordonnées avec limitation
-            const newX = Math.min(windowWidth - logoWidth, Math.max(0, currentX + x)); // 0 et windowWidth - logoWidth
-            const newY = Math.min(windowHeight - logoHeight, Math.max(0, currentY + y)); // 0 et windowHeight - logoHeight
+    // Calculer les nouvelles coordonnées avec limitation
+    const newX = Math.min(windowWidth - logoWidth, Math.max(0, currentX + x)); // 0 et windowWidth - logoWidth
+    const newY = Math.min(windowHeight - logoHeight, Math.max(0, currentY + y)); // 0 et windowHeight - logoHeight
 
-            // Appliquer la nouvelle position
-            logo.style.left = `${newX}px`;
-            logo.style.top = `${newY}px`;
+    // Appliquer la nouvelle position
+    logo.style.left = `${newX}px`;
+    logo.style.top = `${newY}px`;
 
-            // Appliquer la rotation pour que le scarabé regarde dans la direction du mouvement
-            logo.style.transform = `rotate(${direction}deg)`;
-        }
+    // Appliquer la rotation pour que le scarabé regarde dans la direction du mouvement
+    logo.style.transform = `rotate(${direction}deg)`;
+}
 
-        // Déplacer le scarabé à une nouvelle position toutes les 500 ms
-        setInterval(randomPosition, 500);
+// Déplacer le scarabé à une nouvelle position toutes les 500 ms
+setInterval(randomPosition, 500);
 
-        // Initialiser la position du scarabé au démarrage
-        logo.style.left = `${Math.random() * (window.innerWidth - 100)}px`;
-        logo.style.top = `${Math.random() * (window.innerHeight - 100)}px`;
+// Initialiser la position du scarabé au démarrage
+logo.style.left = `${Math.random() * (window.innerWidth - 100)}px`;
+logo.style.top = `${Math.random() * (window.innerHeight - 100)}px`;
 
-        // Écouter les mouvements de la souris
-        document.addEventListener('mousemove', (event) => {
-            // Récupérer les coordonnées de la souris
-            const mouseX = event.clientX;
-            const mouseY = event.clientY;
+// Écouter les mouvements de la souris
+document.addEventListener('mousemove', (event) => {
+    // Récupérer les coordonnées de la souris
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
 
-            // Définir un décalage pour le logo qui suit le curseur
-            const offsetX = 20; // Décalage horizontal
-            const offsetY = 20; // Décalage vertical
-
-            // Placer le logo qui suit le curseur à la position de la souris, avec un léger décalage
-            logoo.style.left = `${mouseX + offsetX - logoo.offsetWidth / 2}px`; // Centrer le logo par rapport à la souris avec décalage
-            logoo.style.top = `${mouseY + offsetY - logoo.offsetHeight / 2}px`;
-            
-            // Rotation pour que le scarabé qui suit le curseur regarde vers le curseur
-            const dx = mouseX - (parseFloat(logoo.style.left) + logoo.offsetWidth / 2);
-            const dy = mouseY - (parseFloat(logoo.style.top) + logoo.offsetHeight / 2);
-            const angle = Math.atan2(dy, dx) * (180 / Math.PI);
-            logoo.style.transform = `rotate(${angle}deg)`;
-        });
+    // Placer le logo qui suit le curseur à la position de la souris, avec un léger décalage
+    logoo.style.left = `${mouseX - logoo.offsetWidth / 2}px`; // Centrer le logo par rapport à la souris
+    logoo.style.top = `${mouseY - logoo.offsetHeight / 2}px`;
+    
+    // Rotation pour que le scarabé qui suit le curseur regarde vers le curseur
+    const dx = mouseX - (parseFloat(logoo.style.left) + logoo.offsetWidth / 2);
+    const dy = mouseY - (parseFloat(logoo.style.top) + logoo.offsetHeight / 2);
+    const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+    logoo.style.transform = `rotate(${angle}deg)`;
+});
     </script>
     {% block scripts %}{% endblock %}
 </body>
