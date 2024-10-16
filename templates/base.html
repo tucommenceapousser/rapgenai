@@ -126,14 +126,21 @@
             const offsetY = 20; // Décalage vertical
 
             // Placer le logo qui suit le curseur à la position de la souris, avec un léger décalage
-            logoo.style.left = `${mouseX + offsetX - logoo.offsetWidth / 10}px`; // Centrer le logo par rapport à la souris avec décalage
-            logoo.style.top = `${mouseY + offsetY - logoo.offsetHeight / 10}px`;
+            logoo.style.left = `${mouseX + offsetX - logoo.offsetWidth / 2}px`; // Centrer le logo par rapport à la souris avec décalage
+            logoo.style.top = `${mouseY + offsetY - logoo.offsetHeight / 2}px`;
             
             // Rotation pour que le scarabé qui suit le curseur regarde vers le curseur
             const dx = mouseX - (parseFloat(logoo.style.left) + logoo.offsetWidth / 2);
             const dy = mouseY - (parseFloat(logoo.style.top) + logoo.offsetHeight / 2);
             const angle = Math.atan2(dy, dx) * (180 / Math.PI);
-            logoo.style.transform = `rotate(${angle}deg)`;
+            logoo.style.transform = `rotate(${angle}deg`;
+        });
+
+        // Fonction pour mettre à jour les limites lorsque la fenêtre est redimensionnée
+        window.addEventListener('resize', () => {
+            // Rappeler la position aléatoire pour rester à l'intérieur des limites
+            logo.style.left = `${Math.min(window.innerWidth - logo.offsetWidth, parseFloat(logo.style.left))}px`;
+            logo.style.top = `${Math.min(window.innerHeight - logo.offsetHeight, parseFloat(logo.style.top))}px`;
         });
     </script>
     {% block scripts %}{% endblock %}
