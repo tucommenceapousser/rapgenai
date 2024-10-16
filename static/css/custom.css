@@ -121,3 +121,10 @@ body {
     justify-content: center;  /* Centre le contenu horizontalement */
     margin-bottom: 20px;      /* Ajoute un espacement en bas */
 }
+
+.logo-svgg {
+    width: 50px; /* Taille plus petite */
+    height: auto;
+    z-index: 10; /* Assure que le logo est au-dessus des autres éléments */
+    transition: transform 0.2s; /* Ajoute une légère transition lors du suivi */
+}
