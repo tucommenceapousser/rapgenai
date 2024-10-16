@@ -115,11 +115,11 @@ body {
 }
 
 .logo-svg {
-    width: 100px; /* Taille du logo en mouvement */
+    width: 70px; /* Taille du logo en mouvement */
 }
 
 .logo-svgg {
-    width: 50px; /* Taille du logo qui suit le curseur */
+    width: 30px; /* Taille du logo qui suit le curseur */
 }
 
 .logo-container {
