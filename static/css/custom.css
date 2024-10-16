@@ -112,7 +112,7 @@ body {
     position: absolute; /* Position absolue pour le mouvement libre */
     width: 100px; /* Ajuste la taille ici */
     height: auto;
-    animation: moveAround 10s infinite alternate, glow 1.5s infinite alternate; /* Appliquer les deux animations */
+    animation: glow 1.5s infinite alternate; /* Appliquer uniquement l'animation de glow ici */
     z-index: 10; /* Assure que le logo est au-dessus des autres éléments */
 }
 
