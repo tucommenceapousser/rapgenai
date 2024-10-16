@@ -27,8 +27,6 @@
             <!-- Section pour afficher le logo SVG -->
             <div class="logo-container">
                 <img src="{{ url_for('static', filename='buganim.svg') }}" alt="Logo" class="logo-svg">
-            </div>
-            <div class="logo-containerr">
                 <img src="{{ url_for('static', filename='buganim.svg') }}" alt="Logo Scarabé" class="logo-svgg" style="position: absolute; width: 50px;"> <!-- Logo plus petit -->
             </div>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -73,7 +71,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     <script>
-        const logo = document.querySelector('.logo-svg');
+    const logo = document.querySelector('.logo-svg');
+const logoo = document.querySelector('.logo-svgg');
 let direction = 0; // Direction initiale en degrés
 
 function randomPosition() {
@@ -111,6 +110,23 @@ setInterval(randomPosition, 500);
 // Initialiser la position du scarabé au démarrage
 logo.style.left = `${Math.random() * (window.innerWidth - 100)}px`;
 logo.style.top = `${Math.random() * (window.innerHeight - 100)}px`;
+
+// Écouter les mouvements de la souris
+document.addEventListener('mousemove', (event) => {
+    // Récupérer les coordonnées de la souris
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
+
+    // Placer le logo qui suit le curseur à la position de la souris, avec un léger décalage
+    logoo.style.left = `${mouseX - logoo.offsetWidth / 2}px`; // Centrer le logo par rapport à la souris
+    logoo.style.top = `${mouseY - logoo.offsetHeight / 2}px`;
+    
+    // Rotation pour que le scarabé qui suit le curseur regarde vers le curseur
+    const dx = mouseX - (parseFloat(logoo.style.left) + logoo.offsetWidth / 2);
+    const dy = mouseY - (parseFloat(logoo.style.top) + logoo.offsetHeight / 2);
+    const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+    logoo.style.transform = `rotate(${angle}deg)`;
+});
     </script>
     {% block scripts %}{% endblock %}
 </body>
