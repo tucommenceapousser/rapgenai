@@ -108,23 +108,22 @@ body {
     }
 }
 
+.logo-svg, .logo-svgg {
+    position: absolute; /* Pour les deux logos */
+    z-index: 10; /* Assure que les logos sont au-dessus des autres éléments */
+    transition: transform 0.2s; /* Pour une animation fluide */
+}
+
 .logo-svg {
-    position: absolute; /* Position absolue pour le mouvement libre */
-    width: 100px; /* Ajuste la taille ici */
-    height: auto;
-    animation: glow 1.5s infinite alternate; /* Appliquer uniquement l'animation de glow ici */
-    z-index: 10; /* Assure que le logo est au-dessus des autres éléments */
+    width: 100px; /* Taille du logo en mouvement */
+}
+
+.logo-svgg {
+    width: 50px; /* Taille du logo qui suit le curseur */
 }
 
 .logo-container {
     display: flex;
     justify-content: center;  /* Centre le contenu horizontalement */
     margin-bottom: 20px;      /* Ajoute un espacement en bas */
-}
-
-.logo-svgg {
-    width: 50px; /* Taille plus petite */
-    height: auto;
-    z-index: 10; /* Assure que le logo est au-dessus des autres éléments */
-    transition: transform 0.2s; /* Ajoute une légère transition lors du suivi */
 }
